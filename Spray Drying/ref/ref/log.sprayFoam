@@ -1,0 +1,553 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-1ac1210412fb
+Exec   : sprayFoam
+Date   : Dec 22 2024
+Time   : 15:41:34
+Host   : "mcfd-VirtualBox"
+PID    : 22564
+I/O    : uncollated
+Case   : /home/mcfd/OpenFOAM/mcfd-8/run/ref
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: No convergence criteria found
+
+
+PIMPLE: Operating solver in transient mode with 1 outer corrector
+PIMPLE: Operating solver in PISO mode
+
+
+
+Reading g
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         multiComponentMixture;
+    transport       sutherland;
+    thermo          janaf;
+    energy          sensibleEnthalpy;
+    equationOfState perfectGas;
+    specie          specie;
+}
+
+Creating component thermo properties:
+    multi-component carrier - 5 species
+    liquids - 1 components
+    solids - 0 components
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Creating turbulence model
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kEpsilon
+RAS
+{
+    model           kEpsilon;
+    turbulence      on;
+    printCoeffs     on;
+    Cmu             0.09;
+    C1              1.44;
+    C2              1.92;
+    C3              0;
+    sigmak          1;
+    sigmaEps        1.3;
+}
+
+Creating thermophysical transport model
+
+Selecting thermophysical transport type RAS
+Selecting default RAS thermophysical transport model eddyDiffusivity
+Creating combustion model
+
+Selecting combustion model PaSR
+Selecting chemistry solver 
+{
+    solver          ode;
+    method          standard;
+}
+
+StandardChemistryModel: Number of species = 5 and reactions = 1
+Selecting ODE solver seulex
+    using integrated reaction rate
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+
+Constructing reacting cloud
+Constructing particle forces
+    Selecting particle force sphereDrag
+Constructing cloud functions
+    none
+Constructing particle injection models
+Creating injector: model1
+Selecting injection model coneInjection
+    Constructing 3-D injection
+Selecting distribution model RosinRammler
+    Distribution min: 1e-06 max: 0.00015 mean: 0.00015
+Selecting dispersion model none
+Selecting patch interaction model standardWallInteraction
+Selecting stochastic collision model none
+Selecting surface film model none
+Selecting U integration scheme Euler
+Selecting heat transfer model RanzMarshall
+Selecting T integration scheme analytical
+Selecting composition model singlePhaseMixture
+Selecting phase change model liquidEvaporationBoil
+Participating liquid species:
+    C7H16
+Selecting AtomizationModel none
+Selecting BreakupModel ReitzDiwakar
+Average parcel mass: 2.4e-10
+Selecting radiationModel none
+No finite volume options present
+Courant Number mean: 0 max: 0
+
+Starting time loop
+
+    writing object Qdot
+Courant Number mean: 0 max: 0
+deltaT = 2.94118e-06
+Time = 2.94118e-06
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 58 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 58
+    Current mass in system          = 6.86834e-10
+    Linear momentum                 = (-2.0238e-10 -9.22153e-09 4.10152e-11)
+   |Linear momentum|                = 9.22384e-09
+    Linear kinetic energy           = 7.12935e-08
+    model1:
+        number of parcels added     = 58
+        mass introduced             = 6.86841e-10
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 320.41, 322.239
+    Mass transfer phase change      = 7.0492e-15
+    D10, D32, Dmax (mu)             = 84.9732, 105.328, 147.734
+    Liquid penetration 95% mass (m) = 6.3459e-05
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 1, Final residual = 4.3999e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 1, Final residual = 4.98394e-07, No Iterations 2
+smoothSolver:  Solving for Uz, Initial residual = 1, Final residual = 4.39892e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 1, Final residual = 2.522e-09, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.7763, Final residual = 1.95784e-09, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0, Final residual = 0, No Iterations 0
+DILUPBiCGStab:  Solving for h, Initial residual = 0.999074, Final residual = 2.51966e-09, No Iterations 1
+T gas min/max   799.798, 800
+GAMG:  Solving for p, Initial residual = 0.999999, Final residual = 0.0620256, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 2.16568e-10, global = -7.43815e-12, cumulative = -7.43815e-12
+rho max/min : 21.6951 21.6897
+GAMG:  Solving for p, Initial residual = 0.0267197, Final residual = 5.00576e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.71167e-15, global = 2.73601e-17, cumulative = -7.43812e-12
+rho max/min : 21.6951 21.6897
+smoothSolver:  Solving for epsilon, Initial residual = 0.00241979, Final residual = 6.74282e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 1, Final residual = 3.62204e-07, No Iterations 2
+ExecutionTime = 2.51 s  ClockTime = 3 s
+
+Courant Number mean: 9.14252e-08 max: 0.000121197
+deltaT = 3.36134e-06
+Time = 6.30252e-06
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 68 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 126
+    Current mass in system          = 2.52494e-09
+    Linear momentum                 = (3.17305e-11 -6.61194e-08 6.10812e-10)
+   |Linear momentum|                = 6.61222e-08
+    Linear kinetic energy           = 9.96084e-07
+    model1:
+        number of parcels added     = 126
+        mass introduced             = 2.52502e-09
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 320.679, 348.95
+    Mass transfer phase change      = 8.52855e-14
+    D10, D32, Dmax (mu)             = 27.9427, 84.2624, 146.563
+    Liquid penetration 95% mass (m) = 0.000147223
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.368823, Final residual = 1.01126e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.924903, Final residual = 6.36381e-07, No Iterations 2
+smoothSolver:  Solving for Uz, Initial residual = 0.3674, Final residual = 1.01888e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.715422, Final residual = 1.10985e-08, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.858356, Final residual = 1.3304e-08, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 1, Final residual = 1.54905e-08, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 1, Final residual = 1.54905e-08, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.713857, Final residual = 1.41956e-08, No Iterations 1
+T gas min/max   797.971, 800
+GAMG:  Solving for p, Initial residual = 0.698206, Final residual = 0.051027, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.89614e-09, global = -1.32877e-10, cumulative = -1.40315e-10
+rho max/min : 21.7432 21.6892
+GAMG:  Solving for p, Initial residual = 0.0217145, Final residual = 5.71987e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.04344e-14, global = -5.03422e-17, cumulative = -1.40315e-10
+rho max/min : 21.7432 21.6892
+smoothSolver:  Solving for epsilon, Initial residual = 0.00128524, Final residual = 3.93149e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.432937, Final residual = 1.23927e-07, No Iterations 2
+ExecutionTime = 3.5 s  ClockTime = 4 s
+
+Courant Number mean: 3.18271e-07 max: 0.00146571
+deltaT = 3.9725e-06
+Time = 1.0275e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 79 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 205
+    Current mass in system          = 6.14548e-09
+    Linear momentum                 = (1.03541e-10 -2.47991e-07 -1.25729e-09)
+   |Linear momentum|                = 2.47995e-07
+    Linear kinetic energy           = 5.75082e-06
+    model1:
+        number of parcels added     = 205
+        mass introduced             = 6.14581e-09
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 321.023, 366.548
+    Mass transfer phase change      = 3.29036e-13
+    D10, D32, Dmax (mu)             = 35.0647, 84.4034, 146.416
+    Liquid penetration 95% mass (m) = 0.000314372
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.350923, Final residual = 1.93813e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.662407, Final residual = 6.88693e-07, No Iterations 2
+smoothSolver:  Solving for Uz, Initial residual = 0.351525, Final residual = 1.93678e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.401693, Final residual = 1.39844e-08, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.489162, Final residual = 1.73789e-08, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.537146, Final residual = 1.93144e-08, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.537146, Final residual = 1.93144e-08, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.430045, Final residual = 2.37599e-08, No Iterations 1
+T gas min/max   792.632, 800
+GAMG:  Solving for p, Initial residual = 0.524845, Final residual = 0.0257623, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.23872e-09, global = -1.14369e-09, cumulative = -1.28401e-09
+rho max/min : 21.8872 21.6885
+GAMG:  Solving for p, Initial residual = 0.0156849, Final residual = 4.77585e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.8392e-13, global = -2.28469e-16, cumulative = -1.28401e-09
+rho max/min : 21.8872 21.6885
+smoothSolver:  Solving for epsilon, Initial residual = 0.00141663, Final residual = 5.59347e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.257032, Final residual = 1.37852e-07, No Iterations 2
+ExecutionTime = 4.46 s  ClockTime = 5 s
+
+Courant Number mean: 9.88492e-07 max: 0.00701467
+deltaT = 4.41389e-06
+Time = 1.46889e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 88 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 293
+    Current mass in system          = 1.20082e-08
+    Linear momentum                 = (2.9062e-09 -6.58969e-07 -6.21505e-09)
+   |Linear momentum|                = 6.59005e-07
+    Linear kinetic energy           = 2.07861e-05
+    model1:
+        number of parcels added     = 293
+        mass introduced             = 1.20092e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 321.25, 383.965
+    Mass transfer phase change      = 1.0112e-12
+    D10, D32, Dmax (mu)             = 34.0525, 77.9538, 145.071
+    Liquid penetration 95% mass (m) = 0.0005269
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.300097, Final residual = 2.73634e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.477492, Final residual = 5.42945e-07, No Iterations 2
+smoothSolver:  Solving for Uz, Initial residual = 0.30299, Final residual = 2.69182e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.350671, Final residual = 4.33054e-08, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.280121, Final residual = 3.49198e-08, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.24283, Final residual = 3.05001e-08, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.24283, Final residual = 3.05001e-08, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.34445, Final residual = 5.26103e-08, No Iterations 1
+T gas min/max   778.865, 800
+GAMG:  Solving for p, Initial residual = 0.463898, Final residual = 0.021609, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.66015e-08, global = -3.70426e-09, cumulative = -4.98826e-09
+rho max/min : 22.2669 21.6866
+GAMG:  Solving for p, Initial residual = 0.0156118, Final residual = 5.07464e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 6.69715e-13, global = -1.15651e-15, cumulative = -4.98826e-09
+rho max/min : 22.2669 21.6866
+smoothSolver:  Solving for epsilon, Initial residual = 0.00146723, Final residual = 6.67298e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.181314, Final residual = 1.43999e-07, No Iterations 2
+ExecutionTime = 5.46 s  ClockTime = 6 s
+
+Courant Number mean: 2.90454e-06 max: 0.0274256
+deltaT = 5.04444e-06
+Time = 1.97333e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 101 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 394
+    Current mass in system          = 2.10795e-08
+    Linear momentum                 = (1.25207e-08 -1.47618e-06 -9.47669e-09)
+   |Linear momentum|                = 1.47627e-06
+    Linear kinetic energy           = 5.97301e-05
+    model1:
+        number of parcels added     = 394
+        mass introduced             = 2.10823e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 321.658, 408.838
+    Mass transfer phase change      = 2.70397e-12
+    D10, D32, Dmax (mu)             = 31.7602, 75.3272, 145.089
+    Liquid penetration 95% mass (m) = 0.000835802
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.286793, Final residual = 4.37412e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.405274, Final residual = 2.22641e-09, No Iterations 3
+smoothSolver:  Solving for Uz, Initial residual = 0.283727, Final residual = 4.20498e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.298982, Final residual = 3.59578e-07, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.22941, Final residual = 2.35882e-07, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.177867, Final residual = 1.39402e-07, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.177867, Final residual = 1.39402e-07, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.283803, Final residual = 3.11461e-07, No Iterations 1
+T gas min/max   766.094, 800
+GAMG:  Solving for p, Initial residual = 0.340706, Final residual = 0.0190085, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 4.26584e-08, global = -1.00303e-08, cumulative = -1.50186e-08
+rho max/min : 22.6273 21.6843
+GAMG:  Solving for p, Initial residual = 0.0156079, Final residual = 5.53538e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.88108e-12, global = -3.23339e-14, cumulative = -1.50186e-08
+rho max/min : 22.6273 21.6843
+smoothSolver:  Solving for epsilon, Initial residual = 0.00157098, Final residual = 8.84453e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.149038, Final residual = 2.0424e-07, No Iterations 2
+ExecutionTime = 6.48 s  ClockTime = 7 s
+
+Courant Number mean: 8.17735e-06 max: 0.0842318
+deltaT = 5.04444e-06
+Time = 2.47778e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 101 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 495
+    Current mass in system          = 3.26787e-08
+    Linear momentum                 = (5.52726e-10 -2.76775e-06 1.62812e-09)
+   |Linear momentum|                = 2.76775e-06
+    Linear kinetic energy           = 0.000136821
+    model1:
+        number of parcels added     = 495
+        mass introduced             = 3.26855e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 321.681, 439.294
+    Mass transfer phase change      = 6.79857e-12
+    D10, D32, Dmax (mu)             = 23.1731, 70.2184, 143.984
+    Liquid penetration 95% mass (m) = 0.00121267
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.240154, Final residual = 3.82668e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.31557, Final residual = 6.70987e-09, No Iterations 3
+smoothSolver:  Solving for Uz, Initial residual = 0.239327, Final residual = 4.16543e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.27145, Final residual = 8.5679e-07, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.262636, Final residual = 7.15479e-07, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.254, Final residual = 5.43768e-07, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.254, Final residual = 5.43768e-07, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.221186, Final residual = 5.95841e-07, No Iterations 1
+T gas min/max   749.378, 800.007
+GAMG:  Solving for p, Initial residual = 0.321191, Final residual = 0.0176581, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 8.38811e-08, global = -1.40396e-08, cumulative = -2.90582e-08
+rho max/min : 23.1717 21.6777
+GAMG:  Solving for p, Initial residual = 0.0165, Final residual = 5.30276e-07, No Iterations 8
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.64842e-12, global = -2.1903e-14, cumulative = -2.90582e-08
+rho max/min : 23.1716 21.6778
+smoothSolver:  Solving for epsilon, Initial residual = 0.00152193, Final residual = 9.36076e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.126048, Final residual = 3.21354e-07, No Iterations 2
+ExecutionTime = 7.52 s  ClockTime = 9 s
+
+Courant Number mean: 1.79816e-05 max: 0.180199
+deltaT = 2.80247e-06
+Time = 2.75803e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 56 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 551
+    Current mass in system          = 4.02138e-08
+    Linear momentum                 = (-7.48936e-09 -3.75498e-06 -3.41861e-08)
+   |Linear momentum|                = 3.75514e-06
+    Linear kinetic energy           = 0.000207206
+    model1:
+        number of parcels added     = 551
+        mass introduced             = 4.0225e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 321.05, 456.74
+    Mass transfer phase change      = 1.11999e-11
+    D10, D32, Dmax (mu)             = 20.5369, 69.3086, 143.086
+    Liquid penetration 95% mass (m) = 0.00143232
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.139502, Final residual = 4.30523e-08, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.145375, Final residual = 6.09123e-09, No Iterations 3
+smoothSolver:  Solving for Uz, Initial residual = 0.141287, Final residual = 9.66172e-08, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.135055, Final residual = 5.50317e-07, No Iterations 1
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.138214, Final residual = 4.16595e-07, No Iterations 1
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.14057, Final residual = 1.81762e-07, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.14057, Final residual = 1.81762e-07, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.0889676, Final residual = 2.43553e-07, No Iterations 1
+T gas min/max   734.553, 800.018
+GAMG:  Solving for p, Initial residual = 0.199556, Final residual = 0.00290032, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.55936e-08, global = -9.52056e-10, cumulative = -3.00103e-08
+rho max/min : 23.6601 21.6746
+GAMG:  Solving for p, Initial residual = 0.00354603, Final residual = 7.33986e-07, No Iterations 5
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 5.03974e-12, global = 3.21963e-15, cumulative = -3.00103e-08
+rho max/min : 23.6599 21.6748
+smoothSolver:  Solving for epsilon, Initial residual = 0.00101756, Final residual = 7.78242e-07, No Iterations 1
+smoothSolver:  Solving for k, Initial residual = 0.0900249, Final residual = 5.99789e-07, No Iterations 2
+ExecutionTime = 8.54 s  ClockTime = 10 s
+
+Courant Number mean: 1.37704e-05 max: 0.12489
+deltaT = 2.24197e-06
+Time = 2.98222e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 45 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 596
+    Current mass in system          = 4.68012e-08
+    Linear momentum                 = (-3.25268e-08 -4.65736e-06 -4.52056e-08)
+   |Linear momentum|                = 4.65769e-06
+    Linear kinetic energy           = 0.000275972
+    model1:
+        number of parcels added     = 596
+        mass introduced             = 4.68188e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 320.868, 474.868
+    Mass transfer phase change      = 1.75869e-11
+    D10, D32, Dmax (mu)             = 16.1412, 64.9662, 142.907
+    Liquid penetration 95% mass (m) = 0.0016175
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.112573, Final residual = 2.75997e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.116467, Final residual = 7.16668e-08, No Iterations 3
+smoothSolver:  Solving for Uz, Initial residual = 0.111598, Final residual = 1.59297e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.123804, Final residual = 2.07627e-09, No Iterations 2
+DILUPBiCGStab:  Solving for O2, Initial residual = 0.120603, Final residual = 2.87865e-09, No Iterations 2
+DILUPBiCGStab:  Solving for CO2, Initial residual = 0.116108, Final residual = 5.53292e-07, No Iterations 1
+DILUPBiCGStab:  Solving for H2O, Initial residual = 0.116108, Final residual = 5.53292e-07, No Iterations 1
+DILUPBiCGStab:  Solving for h, Initial residual = 0.0738538, Final residual = 5.01014e-07, No Iterations 1
+T gas min/max   731.157, 800.02
+GAMG:  Solving for p, Initial residual = 0.137403, Final residual = 0.00169059, No Iterations 2
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 1.13613e-08, global = -5.06932e-10, cumulative = -3.05172e-08
+rho max/min : 23.8041 21.6678
+GAMG:  Solving for p, Initial residual = 0.00289955, Final residual = 3.85774e-07, No Iterations 5
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 3.08897e-12, global = 1.45038e-15, cumulative = -3.05172e-08
+rho max/min : 23.8038 21.6679
+smoothSolver:  Solving for epsilon, Initial residual = 0.00146563, Final residual = 3.90769e-08, No Iterations 2
+smoothSolver:  Solving for k, Initial residual = 0.123793, Final residual = 1.03783e-07, No Iterations 3
+ExecutionTime = 9.59 s  ClockTime = 11 s
+
+Courant Number mean: 1.4371e-05 max: 0.117236
+deltaT = 1.83434e-06
+Time = 3.16566e-05
+
+
+Solving 3-D cloud sprayCloud
+
+Cloud: sprayCloud injector: model1
+    Added 37 new parcels
+
+Cloud: sprayCloud
+    Current number of parcels       = 633
+    Current mass in system          = 5.25588e-08
+    Linear momentum                 = (-1.36617e-08 -5.48709e-06 -5.66361e-08)
+   |Linear momentum|                = 5.4874e-06
+    Linear kinetic energy           = 0.000343691
+    model1:
+        number of parcels added     = 633
+        mass introduced             = 5.25855e-08
+    Parcel fate (number, mass)
+      - escape                      = 0, 0
+      - stick                       = 0, 0
+    Temperature min/max             = 320.833, 487.919
+    Mass transfer phase change      = 2.67792e-11
+    D10, D32, Dmax (mu)             = 13.2413, 62.7975, 142.769
+    Liquid penetration 95% mass (m) = 0.0017761
+
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.0981097, Final residual = 5.54861e-07, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.102637, Final residual = 3.02183e-07, No Iterations 3
+smoothSolver:  Solving for Uz, Initial residual = 0.097541, Final residual = 9.51144e-07, No Iterations 2
+DILUPBiCGStab:  Solving for C7H16, Initial residual = 0.118378, Final residual = 2.39718e-08, No Iterations 2
